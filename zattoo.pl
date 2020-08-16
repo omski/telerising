@@ -3844,10 +3844,11 @@ sub http_child {
 						agent => "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/72.0"
 					);
 					
-					print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "before livestream request $liveview_url\n";
+					print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "before livestream request building $liveview_url\n";
 					my $livestream_request  = HTTP::Request::Common::GET($liveview_url);
+					print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "before livestream request firing $liveview_url\n";
 					my $livestream_response = $livestream_agent->request($livestream_request);
-					print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "after livestream\n";
+					print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "after livestream request\n";
 					
 					if( $livestream_response->is_error ) {
 						print "X " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "LIVE-TV $channel | $quality | $platform - ERROR: Failed to load M3U8\n\n";
