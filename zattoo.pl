@@ -32,7 +32,7 @@ my $tee = new IO::Tee(\*STDOUT, ">>log.txt");
 select $tee;
 
 print "\n =========================                     I             +        \n";
-print " TELERISING API v0.3.8                          I    I         +        \n";
+print " TELERISING API v0.4.0                          I    I         +        \n";
 print " =========================                       I  I       +      +    \n";
 print "                                                  II                    \n";
 print "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    \n";
@@ -748,9 +748,15 @@ sub login_process {
 				my @scriptvalues = $zattootree->look_down('type' => 'text/javascript');
 				my $js_link;
 				
-				eval{
-					$js_link      = $scriptvalues[1]->as_HTML;
-				};
+				foreach my $js_script (@scriptvalues) {
+					
+					$js_script = $js_script->as_HTML;
+					
+					if( $js_script =~ m/<script src="\/app-/ ) {
+						$js_link = $js_script;
+					}
+					
+				}
 				
 				if( defined $js_link ) {
 					$js_link        =~ s/(<script src="\/)(.*)(" type=".*)/$2/g;
@@ -875,9 +881,13 @@ sub login_process {
 					my $new_parser        = HTML::Parser->new;
 					my $new_main_content  = $new_main_response->content;
 					
-					eval{
-						$apptoken     = $scriptvalues[0]->as_HTML;
-					};
+					foreach my $js_script (@scriptvalues) {
+						
+						if( $js_script =~ m/<script type="text\/javascript">window.appToken/ ) {
+							$apptoken = $js_script;
+						}
+						
+					}
 					
 					if( defined $apptoken ) {
 						$apptoken        =~ s/(.*window.appToken = ')(.*)(';.*)/$2/g;
