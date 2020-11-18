@@ -697,8 +697,6 @@ sub login_process {
 				# GET LOGIN HTML
 				my $main_url      = "https://$provider/login/";
 				my $apptoken;
-
-				print "login attempt started\n";
 				
 				my $main_agent    = LWP::UserAgent->new(
 					ssl_opts => {
@@ -711,8 +709,6 @@ sub login_process {
 
 				my $main_request  = HTTP::Request::Common::GET($main_url);
 				my $main_response = $main_agent->request($main_request);
-
-				print "login response received, analyse response\n";
 
 				if( $main_response->is_error ) {
 					ERROR "UNABLE TO LOGIN TO WEBSERVICE! (no internet connection / service unavailable)\n\n";
@@ -773,12 +769,8 @@ sub login_process {
 						agent => "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/72.0"
 					);
 
-					print "request JS start\n";
-
 					my $js_request  = HTTP::Request::Common::GET($js_url);
 					my $js_response = $js_agent->request($js_request);
-
-					print "request JS end\n";
 
 					if( $js_response->is_error ) {
 						ERROR "UNABLE TO LOGIN TO WEBSERVICE! (no internet connection / service unavailable)\n\n";
@@ -812,13 +804,9 @@ sub login_process {
 						agent => "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/72.0"
 					);
 
-					print "request token start\n";
-
 					my $apptoken_request  = HTTP::Request::Common::GET($apptoken_url);
 					my $apptoken_response = $apptoken_agent->request($apptoken_request);
 					
-					print "request token end\n";
-
 					if( $apptoken_response->is_error ) {
 						ERROR "UNABLE TO LOGIN TO WEBSERVICE! (unable to get token json file)\n\n";
 						ERROR "RESPONSE:\n\n" . $apptoken_response->content . "\n\n";
@@ -948,13 +936,9 @@ sub login_process {
 					agent => "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/72.0"
 				);
 
-				print "request session start\n";
-
 				my $session_request  = HTTP::Request::Common::POST($session_url, ['client_app_token' => uri_escape($apptoken), 'uuid' => uri_escape('d7512e98-38a0-4f01-b820-5a5cf98141fe'), 'lang' => uri_escape('en'), 'format' => uri_escape('json')]);
 				my $session_response = $session_agent->request($session_request);
 				my $session_token    = $session_response->header('Set-cookie');
-
-				print "request session end\n";
 				
 				if( defined $session_token ) {
 					$session_token       =~ s/(.*)(beaker.session.id=)(.*)(; Path.*)/$3/g;
@@ -991,12 +975,8 @@ sub login_process {
 				$cookie_jar->set_cookie(0,'beaker.session.id',$session_token,'/',$provider,443);
 				$login_agent->cookie_jar($cookie_jar);
 
-				print "get cookie start";
-
 				my $login_request  = HTTP::Request::Common::POST($login_url, ['login' => $login_mail, 'password' => $login_passwd ]);
 				my $login_response = $login_agent->request($login_request);
-
-				print "get cookie end";
 
 				if( $login_response->is_error ) {
 					ERROR "LOGIN FAILED! (please re-check login data)\n\n";
