@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-#      Copyright (C) 2019-2020 Jan-Luca Neumann
+#      Copyright (C) 2019-2021 Jan-Luca Neumann
 #      https://github.com/sunsettrack4/telerising/
 #
 #      Collaborators:
@@ -32,7 +32,7 @@ my $tee = new IO::Tee(\*STDOUT, ">>log.txt");
 select $tee;
 
 print "\n =========================                     I             +        \n";
-print " TELERISING API v0.4.2                          I    I         +        \n";
+print " TELERISING API v0.4.5                          I    I         +        \n";
 print " =========================                       I  I       +      +    \n";
 print "                                                  II                    \n";
 print "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    \n";
@@ -782,7 +782,7 @@ sub login_process {
 					}
 					
 					my $token_url = $js_response->content;
-					$token_url =~ s/(.*)(token-.*)(\.json"})(.*)/$2\.json/g;
+					$token_url =~ s/(.*)(token-+(.*?)\.json)(.*)/$2/g;
 					
 					if( not defined $2 ) {
 						ERROR "UNABLE TO LOGIN TO WEBSERVICE! (unable to parse token URL)\n\n";
@@ -793,7 +793,7 @@ sub login_process {
 					}
 
 					# GET APPTOKEN
-					my $apptoken_url = "https://$provider/$2.json";
+					my $apptoken_url = "https://$provider/$2";
 					
 					my $apptoken_agent    = LWP::UserAgent->new(
 						ssl_opts => {
@@ -1270,11 +1270,18 @@ sub login_process {
 										$teaser_title =~ s/,/ /g;
 										$teaser_title =~ s/-/_/g;
 										
-										
-										if( defined $teaser_text ) {
-											$vod_m3u = $vod_m3u . "#EXTINF:0001 tvg-id=\"" . $teaser_code . "\" group-title=\"" . $header_name . "\" tvg-logo=\"https://images.zattic.com/cms/" . $teaser_image . "/format_320x180.jpg\", " . $teaser_title . " (" . $teaser_text . ")\n";
+										if( defined $teaser_image ) {
+											if( defined $teaser_text ) {
+												$vod_m3u = $vod_m3u . "#EXTINF:0001 tvg-id=\"" . $teaser_code . "\" group-title=\"" . $header_name . "\" tvg-logo=\"https://images.zattic.com/cms/" . $teaser_image . "/format_320x180.jpg\", " . $teaser_title . " (" . $teaser_text . ")\n";
+											} else {
+												$vod_m3u = $vod_m3u . "#EXTINF:0001 tvg-id=\"" . $teaser_code . "\" group-title=\"" . $header_name . "\" tvg-logo=\"https://images.zattic.com/cms/" . $teaser_image . "/format_320x180.jpg\", " . $teaser_title . "\n";
+											}
 										} else {
-											$vod_m3u = $vod_m3u . "#EXTINF:0001 tvg-id=\"" . $teaser_code . "\" group-title=\"" . $header_name . "\" tvg-logo=\"https://images.zattic.com/cms/" . $teaser_image . "/format_320x180.jpg\", " . $teaser_title . "\n";
+											if( defined $teaser_text ) {
+												$vod_m3u = $vod_m3u . "#EXTINF:0001 tvg-id=\"" . $teaser_code . "\" group-title=\"" . $header_name . "\", " . $teaser_title . " (" . $teaser_text . ")\n";
+											} else {
+												$vod_m3u = $vod_m3u . "#EXTINF:0001 tvg-id=\"" . $teaser_code . "\" group-title=\"" . $header_name . "\", " . $teaser_title . "\n";
+											}
 										}
 										
 										if( $teaser_type eq "Avod::Video" ) {
@@ -4605,7 +4612,7 @@ sub http_child {
 						# EDIT PLAYLIST
 						print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "VOD $vod | $quality | $platform - Editing M3U8\n";
 						$link        =~ /(.*)(NAME=")(.*)(",DEFAULT=.*)($final_quality_audio.*?z32=)(.*)"/m;
-						my $link_video_url = $uri . "/" . "t_track_video_bw_$final_quality_video" . "_num_0.m3u8?z32=" . $6;
+						my $link_video_url = $uri . "/" . "t_track_video_bw_$final_quality_video" . "_num_0_tid_1_nd_4000_mbr_5000_vd_1000000.m3u8?z32=" . $6;
 						my $link_audio_url = $uri . "/" . $5 . $6;
 						my $language = $3;
 						
@@ -5060,7 +5067,7 @@ sub http_child {
 						# EDIT PLAYLIST
 						print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "MOVIE $movie_vod | $quality | $platform - Editing M3U8\n";
 						$link        =~ /(.*)(NAME=")(.*)(",DEFAULT=.*)($final_quality_audio.*?z32=)(.*)"/m;
-						my $link_video_url = $uri . "/" . "t_track_video_bw_$final_quality_video" . "_num_0.m3u8?z32=" . $6;
+						my $link_video_url = $uri . "/" . "t_track_video_bw_$final_quality_video" . "_num_0_tid_1_nd_4000_mbr_5000_vd_1000000.m3u8.m3u8?z32=" . $6;
 						my $link_audio_url = $uri . "/" . $5 . $6;
 						my $language = $3;
 						
