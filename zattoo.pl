@@ -1995,13 +1995,13 @@ sub http_child {
 											
 											# IF QUERY STRING FOR FFMPEG IS SET
 											if( defined $ffmpeg and $user_lv eq "fatal" and defined $multi ) {
-												$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+												$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 											} elsif( defined $ffmpeg and defined $multi ) {
-												$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+												$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 											} elsif( defined $ffmpeg and $user_lv eq "fatal" ) {
-												$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+												$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 											} elsif( defined $ffmpeg ) {
-												$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+												$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 											}
 											
 											# PRINT FINAL URL
@@ -2077,13 +2077,13 @@ sub http_child {
 												
 												# IF QUERY STRING FOR FFMPEG IS SET
 												if( defined $ffmpeg and $user_lv eq "fatal" and defined $multi ) {
-													$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+													$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 												} elsif( defined $ffmpeg and defined $multi ) {
-													$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+													$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 												} elsif( defined $ffmpeg and $user_lv eq "fatal" ) {
-													$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+													$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 												} elsif( defined $ffmpeg ) {
-													$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+													$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 												}
 												
 												# PRINT FINAL URL
@@ -2175,13 +2175,13 @@ sub http_child {
 									
 									# IF QUERY STRING FOR FFMPEG IS SET
 									if( defined $ffmpeg and $user_lv eq "fatal" and defined $multi ) {
-										$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+										$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 									} elsif( defined $ffmpeg and defined $multi ) {
-										$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+										$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 									} elsif( defined $ffmpeg and $user_lv eq "fatal" ) {
-										$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+										$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 									} elsif( defined $ffmpeg ) {
-										$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+										$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 									}
 									
 									# PRINT FINAL URL
@@ -2257,13 +2257,13 @@ sub http_child {
 										
 										# IF QUERY STRING FOR FFMPEG IS SET
 										if( defined $ffmpeg and $user_lv eq "fatal" and defined $multi ) {
-											$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+											$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 										} elsif( defined $ffmpeg and defined $multi ) {
-											$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+											$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 										} elsif( defined $ffmpeg and $user_lv eq "fatal" ) {
-											$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+											$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 										} elsif( defined $ffmpeg ) {
-											$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+											$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 										}
 										
 										# PRINT FINAL URL
@@ -2384,13 +2384,13 @@ sub http_child {
 					
 					# IF QUERY STRING FOR FFMPEG IS SET
 					if( defined $ffmpeg and $user_lv eq "fatal" and defined $multi ) {
-						$vod_file =~ s/(.*index.m3u.*)/pipe:\/\/$ffmpeglib -loglevel fatal -i "$1" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts pipe:1/g;
+						$vod_file =~ s/(.*index.m3u.*)/pipe:\/\/$ffmpeglib -loglevel fatal -re -i "$1" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts pipe:1/g;
 					} elsif( defined $ffmpeg and defined $multi ) {
-						$vod_file =~ s/(.*index.m3u.*)/pipe:\/\/$ffmpeglib -i "$1" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts pipe:1/g;
+						$vod_file =~ s/(.*index.m3u.*)/pipe:\/\/$ffmpeglib -re -i "$1" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts pipe:1/g;
 					} elsif( defined $ffmpeg and $user_lv eq "fatal" ) {
-						$vod_file =~ s/(.*index.m3u.*)/pipe:\/\/$ffmpeglib -loglevel fatal -i "$1" -vcodec copy -acodec copy -f mpegts pipe:1/g;
+						$vod_file =~ s/(.*index.m3u.*)/pipe:\/\/$ffmpeglib -loglevel fatal -re -i "$1" -vcodec copy -acodec copy -f mpegts pipe:1/g;
 					} elsif( defined $ffmpeg ) {
-						$vod_file =~ s/(.*index.m3u.*)/pipe:\/\/$ffmpeglib -i "$1" -vcodec copy -acodec copy -f mpegts pipe:1/g;
+						$vod_file =~ s/(.*index.m3u.*)/pipe:\/\/$ffmpeglib -re -i "$1" -vcodec copy -acodec copy -f mpegts pipe:1/g;
 					}
 					
 					my $response = HTTP::Response->new( 200, 'OK');
@@ -2703,13 +2703,13 @@ sub http_child {
 										
 										# IF QUERY STRING FOR FFMPEG IS SET
 										if( defined $ffmpeg and $user_lv eq "fatal" and defined $multi ) {
-											$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+											$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 										} elsif( defined $ffmpeg and defined $multi ) {
-											$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+											$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 										} elsif( defined $ffmpeg and $user_lv eq "fatal" ) {
-											$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+											$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 										} elsif( defined $ffmpeg ) {
-											$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+											$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 										}
 										
 										# PRINT FINAL URL
@@ -2788,13 +2788,13 @@ sub http_child {
 									
 								# IF QUERY STRING FOR FFMPEG IS SET
 								if( defined $ffmpeg and $user_lv eq "fatal" and defined $multi ) {
-									$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+									$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 								} elsif( defined $ffmpeg and defined $multi ) {
-									$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+									$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 								} elsif( defined $ffmpeg and $user_lv eq "fatal" ) {
-									$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+									$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 								} elsif( defined $ffmpeg ) {
-									$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+									$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 								}
 								
 								# PRINT FINAL URL
@@ -3054,13 +3054,13 @@ sub http_child {
 								
 								# IF QUERY STRING FOR FFMPEG IS SET
 								if( defined $ffmpeg and $user_lv eq "fatal" and defined $multi ) {
-									$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+									$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 								} elsif( defined $ffmpeg and defined $multi ) {
-									$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+									$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 								} elsif( defined $ffmpeg and $user_lv eq "fatal" ) {
-									$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+									$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 								} elsif( defined $ffmpeg ) {
-									$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+									$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 								}
 										
 								# PRINT FINAL URL
@@ -3305,13 +3305,13 @@ sub http_child {
 						
 					# IF QUERY STRING FOR FFMPEG IS SET
 					if( defined $ffmpeg and $user_lv eq "fatal" and defined $multi ) {
-						$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+						$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 					} elsif( defined $ffmpeg and defined $multi ) {
-						$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+						$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -map 0:0 -map 0:1 -map 0:2 -c:a:0 copy -c:a:1 copy -c:v copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 					} elsif( defined $ffmpeg and $user_lv eq "fatal" ) {
-						$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+						$base_m3u_url = "pipe://$ffmpeglib -loglevel fatal -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 					} elsif( defined $ffmpeg ) {
-						$base_m3u_url = "pipe://$ffmpeglib -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
+						$base_m3u_url = "pipe://$ffmpeglib -re -i \"$base_m3u_url\" -vcodec copy -acodec copy -f mpegts -metadata service_name=\"" . $name . "\" pipe:1";
 					}
 					
 					# PRINT FINAL URL
@@ -3901,8 +3901,11 @@ sub http_child {
 						agent => "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/72.0"
 					);
 					
+					print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "before livestream request building $liveview_url\n";
 					my $livestream_request  = HTTP::Request::Common::GET($liveview_url);
+					print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "before livestream request firing $liveview_url\n";
 					my $livestream_response = $livestream_agent->request($livestream_request);
+					print "* " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "after livestream request\n";
 					
 					if( $livestream_response->is_error ) {
 						print "X " . localtime->strftime('%Y-%m-%d %H:%M:%S ') . "LIVE-TV $channel | $quality | $platform - ERROR: Failed to load M3U8\n\n";
